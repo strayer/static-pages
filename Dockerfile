@@ -1,4 +1,4 @@
-FROM nginx:alpine-slim@sha256:49b61e3ddce9e2e4b639dc15b08470b9a81ef0aded80e6af056fab1ad0601d83
+FROM nginx:alpine-slim@sha256:fbd08f22e5f16bb247df6b9ef3aa780ca83acc8656f945ace979e7135b127805
 
 RUN rm -rf /usr/share/nginx/html/*
 
