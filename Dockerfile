@@ -1,5 +1,8 @@
-FROM nginx:alpine-slim@sha256:d4199460812b5750bbd551247ba99e2a1953b7e618d15458d6452c18ce6e2f72
+FROM caddy:2.6.4-alpine
 
-RUN rm -rf /usr/share/nginx/html/*
+COPY fewo-unter-eichen.de/ /srv/fewo-unter-eichen.de/
+COPY olle-orks.org/ /srv/olle-orks.org/
+COPY grunewaldt.de/ /srv/grunewaldt.de/
+COPY gru.earth/ /srv/gru.earth/
 
-COPY src/ /usr/share/nginx/html/
+COPY Caddyfile /etc/caddy/Caddyfile

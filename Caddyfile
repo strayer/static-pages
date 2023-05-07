@@ -1,0 +1,61 @@
+(remove-server) {
+  header /* {
+    -Server
+  }
+}
+
+(hsts) {
+  @https {
+    header X-Forwarded-Proto https
+  }
+  header @https Strict-Transport-Security "max-age=63072000; includeSubDomains"
+}
+
+(https-redirect) {
+  @not_https {
+    not header X-Forwarded-Proto https
+  }
+  redir @not_https https://{host}{uri}
+}
+
+(strip-www) {
+  @www header_regexp host Host ^www\.(.*)
+  redir @www https://{re.host.1}{uri}
+}
+
+(well-known-matrix) {
+  @wkm {
+    path /.well-known/matrix/server /.well-known/matrix/client
+    file # matches that the file exists
+  }
+
+  header @wkm Content-Type application/json
+  header @wkm Access-Control-Allow-Origin *
+}
+
+(static-page) {
+  http://{args.0}, http://www.{args.0} {
+    import remove-server
+    import https-redirect
+    import hsts
+    import strip-www
+    import well-known-matrix
+
+    root * /srv/{args.0}
+    file_server
+  }
+}
+
+{
+  auto_https disable_certs
+  http_port 8000
+}
+
+import static-page fewo-unter-eichen.de
+import static-page olle-orks.org
+import static-page grunewaldt.de
+import static-page gru.earth
+
+:8000 {
+  respond 403
+}

@@ -32,4 +32,4 @@ jobs:
         with:
           push: true
           tags: |
-            ghcr.io/strayer/fewo-static-dump/website:latest
+            ghcr.io/strayer/static-pages/webserver:latest
