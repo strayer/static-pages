@@ -1,6 +1,7 @@
 (remove-server) {
-  header /* {
-    -Server
+  header -Server
+  handle_errors {
+    header -Server
   }
 }
 
