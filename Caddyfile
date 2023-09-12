@@ -26,6 +26,8 @@
     import strip-www
     import well-known-matrix
 
+    encode zstd gzip
+
     root * /srv/{args.0}
     file_server
   }
