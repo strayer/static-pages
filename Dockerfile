@@ -1,4 +1,4 @@
-FROM caddy:2.8.4-alpine@sha256:638c5e3b253dba22120df666dbf0393719e98eb1907d3d388ed6503909267c9f
+FROM caddy:2.8.4-alpine@sha256:5d4e02f275d12136a8e0a487e765ce459a00d49e23b543e9cd8190562ec5d27b
 
 COPY fewo-unter-eichen.de/ /srv/fewo-unter-eichen.de/
 COPY olle-orks.org/ /srv/olle-orks.org/
